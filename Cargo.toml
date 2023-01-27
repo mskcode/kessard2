@@ -6,6 +6,6 @@ rust-version = "1.66"
 
 [dependencies]
 reqwest = "0.11.14"
-futures = { version="0", features=["executor"] }
-tokio = { version="1.24.2", features=["rt-multi-thread", "macros"]}
 reqwest-middleware = "0.2.0"
+rocket = { version="0.5.0-rc.2", features=["json"] }
+tokio = { version="1.24.2", features=["rt-multi-thread", "macros"] }
