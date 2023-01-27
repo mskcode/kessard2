@@ -1,0 +1,11 @@
+[package]
+name = "kessard2"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.66"
+
+[dependencies]
+reqwest = "0.11.14"
+futures = { version="0", features=["executor"] }
+tokio = { version="1.24.2", features=["rt-multi-thread", "macros"]}
+reqwest-middleware = "0.2.0"
