@@ -2,6 +2,7 @@ use actix_web::{App, HttpServer};
 use http_server::logging_middleware::LoggingMiddlewareFactory;
 use slog::Logger;
 
+mod health;
 mod http_server;
 
 #[actix_web::main]

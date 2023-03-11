@@ -1,11 +1,24 @@
+use crate::health::health_check::check_health;
 use actix_web::{get, http::header::ContentType, web, HttpResponse};
 
 pub fn api_config(cfg: &mut web::ServiceConfig) {
-    cfg.service(get_healthz);
+    cfg.service(get_healthz).service(get_workload_health);
 }
 
 #[get("/healthz")]
 async fn get_healthz() -> HttpResponse {
+    HttpResponse::Ok()
+        .content_type(ContentType::json())
+        .body(r#"{"status":"OK"}"#)
+}
+
+#[get("/h/{name}")]
+async fn get_workload_health(name: web::Path<String>) -> HttpResponse {
+    println!("{}", name);
+
+    let result = check_health("https://www.google.com").await;
+    result.dump();
+
     HttpResponse::Ok()
         .content_type(ContentType::json())
         .body(r#"{"status":"OK"}"#)
